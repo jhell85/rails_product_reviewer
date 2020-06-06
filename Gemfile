@@ -44,6 +44,7 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'bootstrap-sass'
+  gem 'devise'
 end
 
 group :development do
