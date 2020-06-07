@@ -6,6 +6,7 @@
         <p><%= review.content_body %></p>
         <hr>
       <% end %>
+      <p><%= link_to "Edit Review", new_product_review_path(@product) %></p>
     <% else %>
       <p>Sorry currently we have no reviews for this product</p>
     <% end %>

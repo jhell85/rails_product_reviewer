@@ -1,0 +1,12 @@
+<h4>Write a review for <%= @product.name %>:</h4>
+<%= render "layouts/errors", :object => @review %>
+<br>
+<%= form_for [@product, @review] do |f| %>
+  <input type="text" class ="form-control" name="review[author]" placeholder="Your Name">
+  <br>
+  <textarea type="text" class ="form-control" name="review[content_body]" rows="6" cols="50" placeholder="How was this product? 250 charcters max"></textarea>
+  <br>
+  <input type="number" class ="form-control" name="review[rating]"  placeholder="Rate Product 1-5">
+  <br>
+  <button type="submit" class="btn btn-success">Submit!</button>
+<% end %>
