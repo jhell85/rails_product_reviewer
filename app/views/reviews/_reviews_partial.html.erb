@@ -1,1 +1,11 @@
-<h1>reviews go here</h1>
+<% if @product.reviews.any? %>
+    <h3>Reviews:</h3>
+      <% @product.reviews.each do |review| %>
+        <p>By: <b><%= review.author %></b></p>
+        <p>Rating: <b><%= review.rating %></b> of <b>5</b></p>
+        <p><%= review.content_body %></p>
+        <hr>
+      <% end %>
+    <% else %>
+      <p>Sorry currently we have no reviews for this product</p>
+    <% end %>
