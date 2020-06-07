@@ -1,12 +1,12 @@
-class ProgramsController < ApplicationController
+class ReviewsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
-    @review = @product.review.new
+    @review = @product.reviews.new
     render :new
   end
   def create 
     @product = Product.find(params[:product_id])
-    @review = @product.review.new(review_params)
+    @review = @product.reviews.new(review_params)
     if @review.save
       redirect_to product_path(@product)
     else 
@@ -15,6 +15,7 @@ class ProgramsController < ApplicationController
   end
 
   def show 
+    binding.pry
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     render :show
