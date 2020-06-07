@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
-  before_action :only => [:new, :edit] do
-    redirect_to new_user_session_path unless :is_admin?
+  before_action :only => [:new, :create, :edit, :destroy] do
+    redirect_to new_user_session_path unless current_user && current_user.admin
   end
 
   def index
@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-    before_action :authenticate_user!
     @product = Product.new(product_params)
     if @product.save
       redirect_to products_path
@@ -25,7 +24,6 @@ class ProductsController < ApplicationController
   end
 
   def edit 
-    before_action :authenticate_user!
     @product = Product.find(params[:id])
     render :edit
   end
