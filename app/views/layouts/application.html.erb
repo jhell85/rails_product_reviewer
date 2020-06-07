@@ -11,7 +11,7 @@
 
   <body class="container">
     <% if user_signed_in? %>
-      <h5 class="text-left"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></h5>
+      <h5 class="text-right"><%= link_to "Logout", destroy_user_session_path, :method => :delete %></h5>
     <% end %>
 
     <%= flash[:alert] %>
