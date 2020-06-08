@@ -15,7 +15,6 @@ class ReviewsController < ApplicationController
   end
 
   def show 
-    binding.pry
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     render :show
@@ -28,6 +27,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     if @review.update(review_params)
       redirect_to product_path(@review.product)
