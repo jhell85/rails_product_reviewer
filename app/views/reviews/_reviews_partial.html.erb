@@ -5,7 +5,9 @@
         <p>Rating: <b><%= review.rating %></b> of <b>5</b></p>
         <p><%= review.content_body %></p>
         <hr>
-
+        <% if current_user && current_user.admin %>
+          <p><%= link_to "edit review", edit_product_review_path(@product, review) %></p>
+        <% end %>
       <% end %>
       <p><%= link_to "add a review", new_product_review_path(@product) %></p>
     <% else %>

@@ -1,1 +1,12 @@
-<h1>edit a review</h1>
+<h4>edit review for <%= @product.name %>:</h4>
+<%= render "layouts/errors", :object => @review %>
+<br>
+<%= form_for [@product, @review] do |f| %>
+  <input type="text" class ="form-control" name="review[author]" value="<%= @review.author %>">
+  <br>
+  <textarea type="text" class ="form-control" name="review[content_body]" rows="6" cols="50" ><%= @review.content_body %></textarea>
+  <br>
+  <input type="number" class ="form-control" name="review[rating]"  value="<%= @review.rating %>">
+  <br>
+  <button type="submit" class="btn btn-success">Edit</button>
+<% end %>
