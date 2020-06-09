@@ -1,18 +1,13 @@
-<h1>Mario's Specialty Foods</h1>
+<h1 class="text-center" >Mario's Construction Material</h1>
 <% if !user_signed_in? %>
-  <p><%= link_to "Sign In", new_user_session_path %></p>
-  <p><%= link_to "Sign Up", new_user_registration_path %></p>
+  <p class="text-center" ><%= link_to "Sign In", new_user_session_path %></p>
+  <p class="text-center" ><%= link_to "Sign Up", new_user_registration_path %></p>
 <% else %>
-  <% if current_user && current_user.admin %>
-    <p><%= link_to "Create a new product", new_product_path %></p>
-  <% end %>
+  <p><%= link_to "see our products", products_path(:g => 'all') %></p>
   <% if @products.any? %>
-  <ul>
-    <% @products.each do |product| %>
-      <li><%= link_to product.name, product_path(product) %>
-    <% end %>
-  </ul>
-  <% else %>
-    <p>There are no products at this time</p>
-  <% end %>
+  <h3 class="text-center" >our newest products</h3>
+    <% @recently_added.each do |product| %>
+      <div class="text-center"><%= link_to product.name, product_path(product) %></div>
+    <%end%>
+  <%end%>
 <% end %>

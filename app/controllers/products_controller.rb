@@ -6,6 +6,16 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    if params[:g]
+      render :list
+    else
+      @recently_added = Product.recently_added
+      render :index
+    end
+  end
+
+  def list
+    @products = Product.all
     render :index
   end
 
