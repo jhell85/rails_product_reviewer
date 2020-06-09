@@ -1,0 +1,14 @@
+<h1 class="text-center" >Our Products</h1>
+ <% if current_user && current_user.admin %>
+    <h4 class="text-center" >Welcome Admin</h4>
+    <p class="text-center" ><%= link_to "Create a new product", new_product_path %></p>
+  <% end %>
+  <% if @products.any? %>
+  <ul>
+    <% @products.each do |product| %>
+      <li><%= link_to product.name, product_path(product) %>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There are no products at this time</p>
+  <% end %>
