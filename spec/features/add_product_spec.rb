@@ -42,6 +42,6 @@ describe 'CRUD for products as an admin', type: :feature do
     click_button "Create Product"
     click_link 'Test Product'
     click_link 'Delete'
-    expect(page).to have_content "Test Product has been destroyed."
+    expect(page).to have_content "Test Product has been destroyed"
   end
 end
