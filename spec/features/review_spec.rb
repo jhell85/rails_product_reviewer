@@ -14,7 +14,23 @@ describe 'It will let a user add reviews' do
     click_link 'Test Product'
     click_link 'Add Review'
   end
-
+  it "lets an admin delete a review" do
+    fill_in "review[author]", :with => "test author"
+    fill_in "review[content_body]", :with => "blah blah blah blah blah blah blah blah blah blah blah blah blah blah"
+    fill_in "review[rating]", :with => "5"
+    click_button "Submit!"
+    click_link 'Logout'
+    click_link 'Sign In'
+    fill_in "user_email", :with => 'test2@test.com'
+    fill_in "user_password", :with => 'password'
+    click_button "Log in"
+    click_link "see our products"
+    click_link "Test Product"
+    click_link "edit review"
+    fill_in "review[author]", :with => 'ME'
+    click_button "Edit"
+    expect(page).to have_content "ME"
+  end
   it "adds a review to a product as a non admin user" do
     fill_in "review[author]", :with => "test author"
     fill_in "review[content_body]", :with => "blah blah blah blah blah blah blah blah blah blah blah blah blah blah"
@@ -67,20 +83,5 @@ describe 'It will let a user add reviews' do
     expect(page).to have_content "Rating must be less than or equal to 5"
   end
 
-  it "lets an admin delete a review" do
-    fill_in "review[author]", :with => "test author"
-    fill_in "review[content_body]", :with => "blah blah blah blah blah blah blah blah blah blah blah blah blah blah"
-    fill_in "review[rating]", :with => "5"
-    click_button "Submit!"
-    click_link 'Logout'
-    click_link 'Sign In'
-    fill_in "user_email", :with => 'test2@test.com'
-    fill_in "user_password", :with => 'password'
-    click_button "Log in"
-    click_link "Test Product"
-    click_link "edit review"
-    fill_in "review[author]", :with => 'ME'
-    click_button "Edit"
-    expect(page).to have_content "ME"
-  end
+ 
 end
