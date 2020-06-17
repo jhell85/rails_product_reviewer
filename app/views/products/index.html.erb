@@ -5,10 +5,20 @@
 <% else %>
   <p><%= link_to "see our products", products_path(:g => 'all') %></p>
   <% if @products.any? %>
-  <h3 class="text-center" >our newest products</h3>
+    <h3 class="text-center" >our newest products</h3>
     <% @recently_added.each do |product| %>
       <div class="text-center"><%= link_to product.name, product_path(product) %></div>
-    <%end%>
-    
+    <% end %>
+  <% else %>
+    <p>There are no products with reviews yet.</p>
   <%end%>
+  <% if @most_reviews.any? %>
+  <h3> Our most talked about products</h3>
+    <ul>
+    <% @most_reviews.each do |most| %>
+      <li><%= link_to most.name, product_path(most) %></li>
+    <% end %>
+  </ul>
+  <%end%>
+  
 <% end %>

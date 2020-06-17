@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     if params[:g]
       render :list
     else
+      @most_reviews = Product.most_reviews
       @recently_added = Product.recently_added
       render :index
     end
