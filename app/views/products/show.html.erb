@@ -12,6 +12,8 @@
   <p><%= link_to "Delete", product_path(@product), :method => 'delete' %></p>
 <% end %>
 
+<p><%= link_to "Add Review", new_product_review_path(@product)%>
+
 
 
 <%= render "reviews/reviews_partial" %>
